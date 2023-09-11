@@ -1,0 +1,52 @@
+<h2 class="text-xl text-[#333] font-semibold mb-[1.7rem] dark:text-white">
+  Login
+</h2>
+
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col gap-4 mb-8"
+>
+  <div class="relative">
+    <input
+      formControlName="login"
+      class="w-full p-3 pl-11 text-base text-[#828282] font-normal border border-[#BDBDBD] rounded-lg"
+      type="text"
+      placeholder="Email or name"
+      required
+    />
+    <div class="absolute top-3 left-3">
+      <img class="w-6 h-6" src="/assets/img/email-30.png" alt="check icon" />
+    </div>
+  </div>
+  <div class="relative">
+    <input
+      formControlName="password"
+      class="w-full p-3 pl-11 text-base text-[#828282] font-normal border border-[#BDBDBD] rounded-lg"
+      type="password"
+      placeholder="Password"
+      required
+    />
+    <div class="absolute top-3 left-3">
+      <img class="w-6 h-6" src="/assets/img/lock.svg" alt="check icon" />
+    </div>
+  </div>
+  <button
+    type="submit"
+    [disabled]="!loginForm.valid || authService.fetching"
+    class="w-full px-3 py-2 text-base text-[#fff] bg-blue-500 disabled:bg-gray-400 font-normal border rounded-lg"
+  >
+    {{ authService.fetching ? "Loading..." : "Login" }}
+  </button>
+</form>
+
+<p class="text-sm text-[#828282] text-center font-normal mb-[1.4rem]">
+  or continue with these social profile
+</p>
+<app-social-auth></app-social-auth>
+<div>
+  <p class="text-sm text-[#828282] text-center font-normal">
+    Don’t have an account yet?
+    <a class="text-[#2D9CDB]" routerLink="/auth/sign-up">Register</a>
+  </p>
+</div>

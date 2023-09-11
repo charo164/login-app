@@ -1,0 +1,51 @@
+<div class="flex flex-col w-full min-h-screen bg-[#FAFAFB]">
+  <div class="flex justify-between py-4 px-7">
+    <a routerLink="/"><img src="/assets/img/devchallenges.svg" alt="logo" /></a>
+    <div
+      (click)="toggleHeaderDropdown()"
+      class="flex relative justify-between cursor-pointer items-center gap-[0.75rem]"
+    >
+      <img
+        class="w-8 h-8 rounded-xl bg-gay-400"
+        [src]="authService.user?.picture"
+        alt="user picture"
+      />
+
+      <p class="text-xs capitalize font-bold text-[#333] hidden sm:block">
+        {{ authService.user?.name }}
+      </p>
+
+      <img class="w-4 h-4" src="/assets/img/sort-down-50.png" alt="" />
+
+      <div
+        *ngIf="showHeaderDropdown"
+        class="absolute left-[50%] top-[150%] translate-x-[-50%] w-full p-4 bg-white rounded-xl"
+      >
+        <div
+          (click)="logout()"
+          class="p-3 text-red-500 text-xs font-medium hover:bg-gray-100 rounded-lg"
+        >
+          Logout
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <div
+    class="flex justify-between w-full max-w-[52rem] mx-auto text-[#828282] text-sm font-normal mb-5"
+  >
+    <p>
+      created by
+      <a
+        class="font-semibold underline"
+        href="https://github.com/charo164"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Jaco164</a
+      >
+    </p>
+    <p>devChallenges.io</p>
+  </div>
+</div>

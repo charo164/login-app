@@ -1,0 +1,8 @@
+<router-outlet></router-outlet>
+
+<div
+  *ngIf="authService.isAuthenticating"
+  class="fixed flex justify-center items-center w-full h-full left-0 top-0 bg-white dark:bg-black"
+>
+  <img class="animate-pulse" src="/assets/img/devchallenges.svg" alt="" />
+</div>

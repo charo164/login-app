@@ -1,0 +1,106 @@
+<div class="flex flex-col justify-center items-center flex-auto mb-5">
+  <div class="flex mb-5 w-full max-w-[52rem]">
+    <a class="text-blue-500 text-lg font-normal" routerLink="/">&lt; Back</a>
+  </div>
+  <div class="border border-[#E0E0E0] rounded-xl w-full max-w-[52rem]">
+    <div
+      class="flex gap-12 justify-between items-center px-5 py-7 sm:px-12 border-b border-[#E0E0E0]"
+    >
+      <div class="flex flex-col">
+        <p class="text-2xl font-normal">Change Info</p>
+        <p class="text-sm text-[#4F4F4F] font-medium">
+          Changes will be reflected to every services
+        </p>
+      </div>
+      <div></div>
+    </div>
+
+    <form
+      [formGroup]="userForm"
+      (submit)="onSubmit()"
+      class="flex flex-col px-5 py-7 sm:px-12"
+    >
+      <div class="flex items-center gap-9 mb-8">
+        <div>
+          <img
+            class="w-16 h-16 rounded-lg"
+            [src]="user?.picture"
+            alt="user picture"
+          />
+        </div>
+        <p class="text-[#828282] text-sm font-medium">CHANGE PHOTO</p>
+      </div>
+      <div class="flex flex-col mb-6">
+        <label class="text-sm text-[#4F4F4F] font-medium" for="name"
+          >Name</label
+        >
+        <input
+          formControlName="name"
+          class="w-full max-w-[22rem] text-[#4F4F4F] border border-[#E0E0E0] rounded-lg px-5 py-4 mt-2"
+          type="text"
+          id="name"
+          placeholder="Enter your name..."
+          [value]="user?.name"
+        />
+      </div>
+      <div class="flex flex-col mb-6">
+        <label class="text-sm text-[#4F4F4F] font-medium" for="bio">Bio</label>
+        <textarea
+          formControlName="bio"
+          class="w-full max-w-[22rem] text-[#4F4F4F] resize-none border border-[#E0E0E0] rounded-lg px-5 py-4 mt-2"
+          type="text"
+          id="bio"
+          placeholder="Enter your bio..."
+          [value]="user?.bio"
+        ></textarea>
+      </div>
+      <div class="flex flex-col mb-6">
+        <label class="text-sm text-[#4F4F4F] font-medium" for="phone"
+          >Phone</label
+        >
+        <input
+          formControlName="phone"
+          class="w-full max-w-[22rem] text-[#4F4F4F] border border-[#E0E0E0] rounded-lg px-5 py-4 mt-2"
+          type="text"
+          id="phone"
+          placeholder="Enter your phone number..."
+          [value]="user?.phone || ''"
+        />
+      </div>
+      <div class="flex flex-col mb-6">
+        <label class="text-sm text-[#4F4F4F] font-medium" for="email"
+          >Email</label
+        >
+        <input
+          formControlName="email"
+          class="w-full max-w-[22rem] text-[#4F4F4F] border border-[#E0E0E0] rounded-lg px-5 py-4 mt-2"
+          type="email"
+          id="email"
+          placeholder="Enter your email..."
+          [value]="user?.email"
+        />
+      </div>
+      <div class="flex flex-col mb-6">
+        <label class="text-sm text-[#4F4F4F] font-medium" for="password"
+          >Password</label
+        >
+        <input
+          formControlName="password"
+          class="w-full max-w-[22rem] text-[#4F4F4F] border border-[#E0E0E0] rounded-lg px-5 py-4 mt-2"
+          type="password"
+          id="password"
+          placeholder="Enter your new password..."
+        />
+      </div>
+      <div>
+        <button
+          [disabled]="!userForm.valid || !isChanged() || usersService.fetching"
+          class="bg-blue-500 disabled:bg-gray-400 text-white text-base font-medium rounded-lg px-5 py-2"
+          type="submit"
+        >
+          {{ usersService.fetching ? "Loading..." : "Save" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

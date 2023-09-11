@@ -1,0 +1,56 @@
+<h2 class="text-xl text-[#333] font-semibold mb-[1.7rem] dark:text-white">
+  Join thousands of learners from around the world
+</h2>
+<h3 class="text-base text-[#333] font-normal mb-[1.7rem] dark:text-white">
+  Master web development by making real-life projects. There are multiple paths
+  for you to choose
+</h3>
+
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col gap-4 mb-8"
+>
+  <div class="relative">
+    <input
+      formControlName="email"
+      class="w-full p-3 pl-11 text-base text-[#828282] font-normal border border-[#BDBDBD] rounded-lg"
+      type="email"
+      placeholder="Email or name"
+      required
+    />
+    <div class="absolute top-3 left-3">
+      <img class="w-6 h-6" src="/assets/img/email-30.png" alt="check icon" />
+    </div>
+  </div>
+  <div class="relative">
+    <input
+      formControlName="password"
+      class="w-full p-3 pl-11 text-base text-[#828282] font-normal border border-[#BDBDBD] rounded-lg"
+      type="text"
+      placeholder="Password"
+      required
+    />
+    <div class="absolute top-3 left-3">
+      <img class="w-6 h-6" src="/assets/img/lock.svg" alt="check icon" />
+    </div>
+  </div>
+  <button
+    type="submit"
+    [disabled]="!loginForm.valid || authService.fetching"
+    class="w-full px-3 py-2 text-base text-[#fff] bg-blue-500 disabled:bg-gray-400 font-normal border rounded-lg"
+  >
+    {{ authService.fetching ? "Loading..." : " Start coding now" }}
+  </button>
+</form>
+
+<p class="text-sm text-[#828282] text-center font-normal mb-[1.4rem]">
+  or continue with these social profile
+</p>
+<app-social-auth></app-social-auth>
+<div>
+  <p class="text-sm text-[#828282] text-center font-normal">
+    Adready a member?
+    <a class="text-[#2D9CDB]" routerLink="/auth/login">Login</a>
+  </p>
+</div>
